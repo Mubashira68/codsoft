@@ -1,0 +1,48 @@
+import java.util.*;
+
+public class task1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("welcome to number Game");
+        int guess = Integer.MAX_VALUE;
+        int game = 0;
+        int count = 0;
+        int score = 0;
+        boolean playing = true;
+
+        while (playing) {
+            game++;
+            System.out.println("game: " + game);
+            count = 0;
+            Random rendom = new Random();
+            int rn = rendom.nextInt(100) + 1;
+            while (guess != rn) {
+                if (count >= 4) {
+                    System.out.println("Game over");
+                    break;
+                }
+                System.out.println("Guess a number: " + rn);
+                guess = sc.nextInt();
+                if (guess == rn) {
+                    System.out.println("congratulation you gussed the correct number");
+                    score++;
+                    break;
+                } else if (guess > rn) {
+                    System.out.println("WRONG, the number you guess is too high");
+                } else {
+                    System.out.println("WRONG, the number you guess is too low");
+                }
+                count++;
+            }
+
+            System.out.print("Do you want to play again? (yes/no): ");
+            String Response = sc.next().toLowerCase();
+
+            if (!Response.equals("yes")) {
+                playing = false;
+            }
+        }
+        System.out.println("your score is: " + score);
+
+    }
+}
